@@ -1,4 +1,3 @@
-
 <html><head><meta name="robots" content="noindex"></head>
 <style>
 #button-convert-mp3{width:200px;margin:auto;text-transform:uppercase;font-size:12px}#button-convert-mp3 button{display:inline-block;height:28px;border:solid 1px transparent;padding:0 10px;outline:0;font-weight:700;text-transform:uppercase;font-size:12px;text-decoration:none;white-space:nowrap;word-wrap:normal;line-height:normal;vertical-align:middle;cursor:pointer;overflow:visible;border-radius:2px;box-shadow:0 1px 0 rgba(0,0,0,.05);border-color:#11a2f7;background:#11a2f7;color:#fff;width:100%}#button-convert-mp3 button:hover{border-color:#004880;background:#004880;box-shadow:0 1px 0 rgba(0,0,0,.1)}#button-convert-mp3 .error{background:#b30000;border:1px solid #b30000;color:#fff;font-weight:700}#button-convert-mp3 .error:hover{border-color:#b30000;background:#b30000;box-shadow:none}#button-convert-mp3 .loader{position:relative;margin:0 auto;width:16px;float:left;margin-right:10px}#button-convert-mp3 .loader:before{content:"";display:block;padding-top:100%}#button-convert-mp3 .circular{-webkit-animation:rotate 2s linear infinite;animation:rotate 2s linear infinite;height:100%;-webkit-transform-origin:center center;transform-origin:center center;width:100%;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto}#button-convert-mp3 .path{stroke:#fff;stroke-width:8%;stroke-dasharray:1,200;stroke-dashoffset:0;-webkit-animation:dash 1.5s ease-in-out infinite;animation:dash 1.5s ease-in-out infinite;stroke-linecap:round}@-webkit-keyframes rotate{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@keyframes rotate{100%{-webkit-transform:rotate(360deg);transform:rotate(360deg)}}@-webkit-keyframes dash{0%{stroke-dasharray:1,200;stroke-dashoffset:0}50%{stroke-dasharray:89,200;stroke-dashoffset:-35px}100%{stroke-dasharray:89,200;stroke-dashoffset:-124px}}@keyframes dash{0%{stroke-dasharray:1,200;stroke-dashoffset:0}50%{stroke-dasharray:89,200;stroke-dashoffset:-35px}100%{stroke-dasharray:89,200;stroke-dashoffset:-124px}}#button-convert-mp3 .loading_wrapper{width:60px;margin:10px auto}
@@ -18,6 +17,9 @@
 		    return vars;
 		}
 		var yb_id = gVar()["v"];
+		if (yb_id) {
+		    
+		}
         $(function(){var downloadBtn=$('#dlBtn');var status=$('#dlBtn i.status');var vid=''+yb_id+'';var host='https://ds.lagu123.click';let url=!1,done=!1,pid=null;loop_url='';downloadBtn.click(async function(event){if(url) return window.open(url,'_blank');$('#wrapper-ic').addClass('show');let response=await $.get(host+'/file/'+vid);if(response.hasOwnProperty('id')){pid=response.id;return convertVideo()}
     if(handleSuccess(response))return;if(handleError(response))return;handleGettingFile(response);response.hasOwnProperty('url')&&window.open(response.url,'_blank')});var handleSuccess=function(response){if(!response.hasOwnProperty('url')){return}
     $('#wrapper-ic').removeClass('show')
