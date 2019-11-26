@@ -15,7 +15,6 @@ html, body {
 	</body>
 	<script type="text/javascript">
 		function gVar() {
-			getToken();
 		    var vars = {};
 		    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi,    
 		    function(m,key,value) {
@@ -24,23 +23,18 @@ html, body {
 		    return vars;
 		}
 		var yb_id = gVar()["v"];
-		var loginUrl = "/dl/view.php"
-    		var xhr = new XMLHttpRequest();
-		var tokenElement = document.getElementById('str');
-		var token = tokenElement.value;
-		xhr.open('POST', loginUrl, true);
-  xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-  xhr.addEventListener('load', function() {
-    var responseObject = JSON.parse(this.response);
-    console.log(responseObject);
-    if (responseObject.token) {
-      tokenElement.innerHTML = responseObject.token;
-    } else {
-      tokenElement.innerHTML = "No token received";
-    }
-  });
-		if (yb_id) {
-		    document.write(unescape('<iframe src=\"\/\/y-api.org\/button\/?v='+yb_id+'&amp;f=mp3&fc=#ffffff&bc=#28a745\" style=\"border: 0; position:fixed; top:0; left:0; right:0; bottom:0; width:100%; height:100%\" scrolling=\"no\" FRAMEBORDER=\"0\"><\/iframe>'));
-		}
+		var type = gVar()["token"];
+		var mp3 = `<div style="width:100%;margin-bottom:20px;max-height:40px;overflow:hidden">
+			<iframe src="//y-api.org/button/?v=`+yb_id+`&amp;f=mp3&fc=#ffffff" style="border: 0; top:0; left:0; right:0; bottom:0; width:100%; height:100%" scrolling="no" FRAMEBORDER="0"></iframe>
+		</div>`;
+var body = '';
+switch (type) {
+  case `+yb_id+`:
+    body = mp3;
+    break;
+}
+if (type) {
+    document.write(body);
+}
 	</script>
 </html>
